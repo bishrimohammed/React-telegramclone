@@ -1,0 +1,248 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+
+  height: 100%;
+  position: relative;
+}
+.wrapper {
+  height: 100%;
+  overflow: hidden;
+}
+
+i {
+  cursor: pointer;
+}
+
+.main_tab i {
+  font-size: 22px;
+  cursor: pointer;
+}
+.main_tab {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70px;
+  z-index: 10;
+  background-color: #1d1b24;
+}
+/*.main_tab li a {
+  text-decoration: none;
+  color: rgba(216, 216, 216, 0.767);
+  font-size: 0.8rem;
+} */
+.main_tab li.active {
+  background-color: rgb(13, 14, 20);
+}
+.main_tab li.active {
+  color: #1e90ff;
+}
+.main_tab li.active #mainTab_badge {
+  border-color: rgb(13, 14, 20);
+}
+.main_tab li {
+  cursor: pointer;
+}
+.main_tab li:hover {
+  color: #1e90ff;
+  background-color: rgb(13, 14, 20);
+}
+.humberg {
+  width: 15px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.589);
+  display: block;
+  margin-bottom: 3px;
+}
+#humbergbtn {
+  cursor: pointer;
+}
+#mainTab_badge {
+  top: -10px;
+  right: -10px;
+  border: 1px solid #1d1b24;
+}
+.main_container {
+  height: 100%;
+}
+.middle_container {
+  box-shadow: 1px 2px 4px rgba(24, 24, 24, 0.5);
+  z-index: 10;
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+}
+
+.day {
+  color: rgba(112, 112, 112, 0.856);
+  font-size: 0.6rem;
+  letter-spacing: 0.01rem;
+}
+li.active .day {
+  color: rgba(255, 255, 255, 0.822);
+}
+.middle_container li {
+  cursor: pointer;
+}
+.middle_container li .Namediv {
+  color: rgb(44, 44, 44);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.middle_container li.active .message {
+  color: rgba(255, 255, 255, 0.87);
+}
+.middle_container li.active {
+  background-color: hsl(212, 86%, 56%);
+}
+.middle_container li.active .Namediv {
+  color: rgba(255, 255, 255, 0.89);
+  font-weight: 500;
+}
+
+.middle_container form {
+  width: 100%;
+  z-index: 100;
+  box-shadow: 1px 2px 4px rgba(24, 24, 24, 0.5);
+}
+
+.middle_container ul {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex: 1;
+  margin-top: 2px;
+  padding: 0 2px;
+}
+.middle_container ul::-webkit-scrollbar {
+  display: none;
+}
+
+.message {
+  max-width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 15px;
+  color: rgba(44, 44, 44, 0.9);
+}
+.detail_container {
+  display: flex;
+  flex-direction: column;
+  flex: 3.5;
+  overflow: hidden;
+}
+.profile_detail {
+  height: 50px;
+  z-index: 1;
+  box-shadow: 1px 2px 4px rgba(24, 24, 24, 0.5);
+}
+
+.chatDetail {
+  overflow-y: scroll;
+  flex: 1;
+  background-color: rgba(150, 149, 149, 0.849);
+}
+.chatDetail::-webkit-scrollbar {
+  display: none;
+}
+.chatDetail img {
+  width: 45px;
+  height: 100%;
+}
+.chatDetail .outmesssage .messageTime {
+  font-size: 10px;
+  position: absolute;
+  bottom: -13px;
+  right: 10px;
+}
+.chatDetail .inmessage .messageTime {
+  font-size: 10px;
+  position: absolute;
+  bottom: 2px;
+  right: 15px;
+}
+.chatDetail .inmessage p,
+.chatDetail .outmesssage p {
+  line-height: initial;
+}
+.chatDetail .inmessage div {
+  padding: 3px 5px 15px;
+  border-radius: 20px 20px 20px 0px;
+}
+.chatDetail .outmesssage div {
+  padding: 5px 10px 15px 10px;
+  border-radius: 20px 20px 0px 20px;
+}
+.messageInput {
+  height: 50px;
+  box-shadow: 4px rgba(24, 24, 24, 0.5);
+}
+.messageInput i {
+  font-size: 23px;
+}
+.main_container {
+  margin-left: 80px;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+.displaymodal {
+  display: block;
+}
+.hidemodal {
+  display: none;
+}
+.modalTop {
+  width: 30%;
+  height: 100vh;
+  position: absolute;
+  background-color: white;
+  top: 0;
+  left: 0;
+  z-index: 12;
+}
+
+@media screen and (min-width: 900px) {
+  .main_tab {
+    width: 100px;
+  }
+  .main_container {
+    margin-left: 100px;
+  }
+}
+@media only screen and (min-width: 700px) and (max-width: 900px) {
+  .main_tab {
+    width: 90px;
+  }
+  .main_container {
+    margin-left: 90px;
+  }
+  .middle_container {
+    flex: 2;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 700px) {
+  .main_tab {
+    width: 80px;
+  }
+  .main_container {
+    margin-left: 80px;
+  }
+}
