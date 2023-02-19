@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+/*
 const showCartSlice = createSlice({
   name: "showOrHideCart",
   initialState: { showcart: false },
@@ -15,3 +15,4 @@ const showCartSlice = createSlice({
 });
 
 export default showCartSlice;
+*/
