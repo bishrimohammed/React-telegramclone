@@ -3,7 +3,7 @@ import authSlice from "./authSlice";
 //import showCartSlice from "./showCartSlice";
 
 const store = configureStore({
-  reducer: { auth: authSlice.reducer },
+  reducer: { auth: authSlice },
 });
 //, cartModal: showCartSlice.reducer
 //export const showCartAction = showCartSlice.actions;
