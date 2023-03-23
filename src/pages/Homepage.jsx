@@ -5,7 +5,28 @@ import Sidebar from "../components/sidebar";
 import Friends from "../components/friends/Friends";
 import SearchForm from "../components/friends/SearchForm";
 import Chat from "../components/chatDetails/Chat";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { setConservations } from "../storeReduxToolkit/authSlice";
 const Homepage = () => {
+  const conser = useSelector((state) => state.auth.Conservations);
+  const user = useSelector((state) => state.auth.user);
+  const [friendActive, setFriendActive] = useState({});
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getconservation = async () => {
+      const res = await fetch(
+        `http://localhost:4000/api/conservations/${user._id}`
+      );
+      const resdata = await res.json();
+      dispatch(setConservations({ consevations: resdata }));
+    };
+    getconservation();
+  }, [user._id, dispatch]);
+  //console.log(conser);
+  const getFriend = (friend) => {
+    setFriendActive(friend);
+  };
   return (
     <div className="wrapper container-fluid  px-0 py-0 d-flex ">
       <Sidebar />
@@ -13,9 +34,9 @@ const Homepage = () => {
         <div className=" d-flex h-100 w-100 ">
           <div className="middle_container   d-md-flex flex-column d-none px-0 position-relative">
             <SearchForm />
-            <Friends />
+            <Friends conservation={conser} getFriend={getFriend} />
           </div>
-          <Chat />
+          <Chat friend={friendActive} />
         </div>
       </div>
     </div>

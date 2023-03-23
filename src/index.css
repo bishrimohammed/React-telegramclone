@@ -88,8 +88,9 @@ i {
 li.active .day {
   color: rgba(255, 255, 255, 0.822);
 }
-.middle_container li {
+.middle_container ul li {
   cursor: pointer;
+  max-height: 66px;
 }
 .middle_container li .Namediv {
   color: rgb(44, 44, 44);
@@ -101,7 +102,8 @@ li.active .day {
 .middle_container li.active .message {
   color: rgba(255, 255, 255, 0.87);
 }
-.middle_container li.active {
+.middle_container li.active,
+.middle_container li:hover {
   background-color: hsl(212, 86%, 56%);
 }
 .middle_container li.active .Namediv {
@@ -119,6 +121,8 @@ li.active .day {
   overflow-y: scroll;
   overflow-x: hidden;
   flex: 1;
+  justify-items: end;
+  align-content: flex-start;
   margin-top: 2px;
   padding: 0 2px;
 }
@@ -127,7 +131,7 @@ li.active .day {
 }
 
 .message {
-  max-width: 200px;
+  max-width: 150px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

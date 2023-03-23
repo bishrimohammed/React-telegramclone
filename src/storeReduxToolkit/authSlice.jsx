@@ -2,7 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "auth ",
-  initialState: { user: null, token: null, Conservations: [] },
+  initialState: {
+    user: null,
+    token: null,
+    Conservations: [],
+    isConseravtionSet: false,
+    Messages: [],
+  },
   reducers: {
     setLogin(state, action) {
       state.user = action.payload.currentuser;
@@ -12,15 +18,38 @@ const authSlice = createSlice({
       state.Conservations = action.payload.consevations;
     },
     setConservation(state, action) {
-      const updatedConsevation = state.Conservations.map((conservation) => {
-        if (conservation._id === action.payload.conservation._id)
-          return action.payload.conservation;
-        return conservation;
-      });
-      state.Conservations = updatedConsevation;
+      const updatedConsevationIndex = state.Conservations.findIndex(
+        (conservation) => {
+          return conservation._id === action.payload.id;
+        }
+      );
+      const lastmessage = {
+        lastText: action.payload.conservation.text,
+        lastTextTime: action.payload.conservation.createdAt,
+      };
+      const conservation = state.Conservations[updatedConsevationIndex];
+      state.Conservations[updatedConsevationIndex] = {
+        ...conservation,
+        lastMessage: lastmessage,
+      };
+    },
+    setMessages(state, action) {
+      state.Messages = action.payload.messages;
+    },
+    setMessage(state, action) {
+      state.Messages.push(action.payload);
+    },
+    reverseConserSet(state, action) {
+      state.isConseravtionSet = action.payload;
     },
   },
 });
-export const { setLogin, setConservations, setConservation } =
-  authSlice.actions;
+export const {
+  setLogin,
+  setConservations,
+  setConservation,
+  setMessages,
+  setMessage,
+  reverseConserSet,
+} = authSlice.actions;
 export default authSlice.reducer;
