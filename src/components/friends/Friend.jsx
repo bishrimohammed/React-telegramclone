@@ -11,7 +11,7 @@ const Friend = ({ active, conserv, currentuser }) => {
       (ownId) => ownId !== currentuser._id
     );
     const getuser = async () => {
-      const res = await fetch(`http://localhost:4000/api/users/${friendId}`);
+      const res = await fetch(`http://localhost:5000/api/users/${friendId}`);
       const resdata = await res.json();
       //dispatch(setConservations({ consevations: resdata }));
       setUser(resdata);

@@ -23,10 +23,10 @@ function Friends({ conservation, getFriend }) {
 
     const getMessages = async () => {
       const res = await fetch(
-        `http://localhost:4000/api/messages/${currentChat._id}`
+        `http://localhost:5000/api/messages/${currentChat._id}`
       );
       const friend_res = await fetch(
-        `http://localhost:4000/api/users/${friendId}`
+        `http://localhost:5000/api/users/${friendId}`
       );
       const friend_resdata = await friend_res.json();
       const resdata = await res.json();

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogin } from "../storeReduxToolkit/authSlice";
+import env from "react-dotenv";
 const Login = () => {
   const dispatch = useDispatch();
   const Auth = useSelector((state) => state.auth.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const URL = process.env.REACT_APP_server_URL;
 
+  //  console.log(URL);
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -14,7 +17,7 @@ const Login = () => {
       email,
       password,
     };
-    const res = await fetch("http://localhost:4000/auth/login", {
+    const res = await fetch(`${URL}/auth/login`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(Data),
