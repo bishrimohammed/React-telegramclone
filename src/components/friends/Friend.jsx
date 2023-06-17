@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import img from "../../assets/_F2A3857_1660135787480_1660135869754.JPG";
-import { useSelector } from "react-redux";
+
 const Friend = ({ active, conserv, currentuser }) => {
   const isactive = `${active ? "active" : ""} w-100 `;
   const URL = process.env.REACT_APP_server_URL;
@@ -18,7 +18,7 @@ const Friend = ({ active, conserv, currentuser }) => {
       // console.log(resdata);
     };
     getuser();
-  }, [currentuser, conserv]);
+  }, [currentuser, conserv, URL]);
   const handleChange = () => {
     console.log("jhgkhgftr");
   };
