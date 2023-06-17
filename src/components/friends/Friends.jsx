@@ -12,7 +12,7 @@ function Friends({ conservation, getFriend }) {
   const currentuser = useSelector((state) => state.auth.user);
   //const isChatSet = useSelector((state) => state.auth.isConseravtionSet);
   const dispatch = useDispatch();
-
+  const URL = process.env.REACT_APP_server_URL;
   useEffect(() => {
     var friendId;
     if (currentChat !== null) {
@@ -22,12 +22,8 @@ function Friends({ conservation, getFriend }) {
     }
 
     const getMessages = async () => {
-      const res = await fetch(
-        `http://localhost:5000/api/messages/${currentChat._id}`
-      );
-      const friend_res = await fetch(
-        `http://localhost:5000/api/users/${friendId}`
-      );
+      const res = await fetch(`${URL}/api/messages/${currentChat._id}`);
+      const friend_res = await fetch(`${URL}/api/users/${friendId}`);
       const friend_resdata = await friend_res.json();
       const resdata = await res.json();
       dispatch(setMessages({ messages: resdata }));

@@ -3,7 +3,7 @@ import img from "../../assets/_F2A3857_1660135787480_1660135869754.JPG";
 import { useSelector } from "react-redux";
 const Friend = ({ active, conserv, currentuser }) => {
   const isactive = `${active ? "active" : ""} w-100 `;
-
+  const URL = process.env.REACT_APP_server_URL;
   const [user, setUser] = useState({});
   //console.log(friendId);
   useEffect(() => {
@@ -11,7 +11,7 @@ const Friend = ({ active, conserv, currentuser }) => {
       (ownId) => ownId !== currentuser._id
     );
     const getuser = async () => {
-      const res = await fetch(`http://localhost:5000/api/users/${friendId}`);
+      const res = await fetch(`${URL}/api/users/${friendId}`);
       const resdata = await res.json();
       //dispatch(setConservations({ consevations: resdata }));
       setUser(resdata);

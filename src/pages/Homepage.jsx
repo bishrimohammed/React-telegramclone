@@ -13,11 +13,10 @@ const Homepage = () => {
   const user = useSelector((state) => state.auth.user);
   const [friendActive, setFriendActive] = useState({});
   const dispatch = useDispatch();
+  const URL = process.env.REACT_APP_server_URL;
   useEffect(() => {
     const getconservation = async () => {
-      const res = await fetch(
-        `http://localhost:5000/api/conservations/${user._id}`
-      );
+      const res = await fetch(`${URL}/api/conservations/${user._id}`);
       const resdata = await res.json();
       dispatch(setConservations({ consevations: resdata }));
     };
