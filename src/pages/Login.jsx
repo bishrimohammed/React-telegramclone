@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogin } from "../storeReduxToolkit/authSlice";
-import env from "react-dotenv";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import { Link } from "react-router-dom";
+//import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+const defaultTheme = createTheme();
 const Login = () => {
+  //const navigate = useNavigate();
   const dispatch = useDispatch();
   const Auth = useSelector((state) => state.auth.user);
   const [email, setEmail] = useState("");
@@ -29,61 +42,78 @@ const Login = () => {
   };
   return (
     <>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <div className="card">
-              <div className="card-header">Login</div>
+      {" "}
+      <ThemeProvider theme={defaultTheme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={submitHandler}
+              noValidate
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
+              />
 
-              <div className="card-body">
-                <form onSubmit={submitHandler}>
-                  <div className="row mb-3">
-                    <label className="col-md-4 col-form-label text-md-end">
-                      Email Address
-                    </label>
-
-                    <div className="col-md-6">
-                      <input
-                        id="email"
-                        type="email"
-                        className="form-control "
-                        name="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row mb-3">
-                    <label className="col-md-4 col-form-label text-md-end">
-                      Password
-                    </label>
-
-                    <div className="col-md-6">
-                      <input
-                        id="password"
-                        type="password"
-                        className="form-control "
-                        name="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row mb-0">
-                    <div className="col-md-6 offset-md-4">
-                      <button type="submit" className="btn btn-primary">
-                        Login
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                className="position-static"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to="/register" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+        </Container>
+      </ThemeProvider>
     </>
   );
 };
