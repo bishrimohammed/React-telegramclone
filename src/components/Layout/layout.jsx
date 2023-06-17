@@ -1,13 +1,11 @@
-import React from "react";
+import { Fragment } from "react";
 
-const layout = (props) => {
+const Layout = (props) => {
   return (
-    <div className="h-100 main_container w-100 flex-grow-1">
-      <div className="row h-100 w-100 justify-content-end">
-        {props.children}
-      </div>
-    </div>
+    <Fragment>
+      <main>{props.children}</main>
+    </Fragment>
   );
 };
 
-export default layout;
+export default Layout;

@@ -1,0 +1,12 @@
+form button {
+  right: -12%;
+  top: 45%;
+  font-size: 25px;
+  z-index: 10000;
+}
+.tohide {
+  visibility: hidden;
+}
+form button:hover {
+  background-color: #303030;
+}

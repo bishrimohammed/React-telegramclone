@@ -1,10 +1,10 @@
 import { LocalPhone, MoreVert, Search, Splitscreen } from "@mui/icons-material";
 
-const chatInfo = () => {
+const chatInfo = ({ friendD }) => {
   return (
     <div className="profile_detail  w-100 d-flex px-4 justify-content-between align-items-center">
       <div className="profile_name">
-        <div className="fw-semibold">Guysa</div>
+        <div className="fw-semibold">{friendD.name}</div>
         <div className="small">last seen recently</div>
       </div>
       <div className="profile_icon d-flex align-items-center">
