@@ -15,7 +15,7 @@ const Message = ({ isyours, data }) => {
       
        console.log(resdata);
     };
-    getuser();
+   // getuser();
     if (friendId !== "") getuser()
     if(friendId === "") {return null}
 
