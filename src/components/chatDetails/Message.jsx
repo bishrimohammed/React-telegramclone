@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import img from "../../assets/_F2A3857_1660135787480_1660135869754.JPG";
 import "./message.css";
 import { useSelector } from "react-redux";
+import { Avatar, Grid, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 const Message = ({ isyours, data }) => {
     var hour = new Date(data.createdAt);
   const URL = process.env.REACT_APP_server_URL;
@@ -73,52 +74,51 @@ const Message = ({ isyours, data }) => {
     <>
       <div className="direct-chat-messages py-0">
         {isyours && (
-          <div className="direct-chat-msg right mb-0">
-            <div className="direct-chat-infos clearfix">
-              <span className="direct-chat-timestamp float-left mb-0">
-                {proHours.hours +
-                  ":" +
-                  proHours.minutes +
-                  " " +
-                  proHours.mediter}
-              </span>
-            </div>
-<div className="d-flex align-items-center"><img
-              src={currentuser.profileimg}
-              alt="avatar 1"
-                width={50}
-            height={50}
-              className="rounded-circle  direct-chat-img"
-            />
+          <ListItem key="1">
+          <Grid container>
+              <Grid item xs={12}>
+                <ListItemText align="right" primary={data.text}></ListItemText>
+                <ListItemIcon>
+                    <Avatar alt="Cindy Baker" src={currentuser.profileimg} />
+                </ListItemIcon>
+              </Grid>
+              <Grid item xs={12}>
+                <ListItemText align="right" secondary={
+                      proHours.hours +
+                      ":" +
+                      proHours.minutes +
+                      " " +
+                      proHours.mediter}>
 
-            <div className="direct-chat-text">{data.text}</div></div>
-            
-          </div>
+                </ListItemText>
+              </Grid>
+          </Grid>
+        </ListItem>
         )}
         {!isyours && (
-          <div className="direct-chat-msg mb-0">
-            <div className="direct-chat-infos clearfix">
-              <span className="direct-chat-timestamp float-right mb-0">
-                {proHours.hours +
-                  ":" +
-                  proHours.minutes +
-                  " " +
-                  proHours.mediter}
-              </span>
-            </div>
-<div className="d-flex align-items-center"> <img
-              src={friendimgURL}
-              alt="avatar 1"
-                width={50}
-            height={50}
-              className="rounded-circle direct-chat-img"
-            />
+          <ListItem key="1">
+          <Grid container>
+              <Grid item xs={12}>
+                <ListItemIcon>
+                    <Avatar alt="Cindy Baker" src={friendimgURL} />
+                </ListItemIcon>
+                  <ListItemText align="left" primary={data.text}></ListItemText>
+              </Grid>
+              <Grid item xs={12}>
+                <ListItemText align="left" secondary={
+                      proHours.hours +
+                      ":" +
+                      proHours.minutes +
+                      " " +
+                      proHours.mediter}>
 
-            <div className="direct-chat-text">{data.text}</div></div>
-           
-          </div>
+                </ListItemText>
+              </Grid>
+          </Grid>
+        </ListItem>
         )}
       </div>
+       
     </>
   );
 };
