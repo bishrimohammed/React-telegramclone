@@ -87,6 +87,8 @@ const Message = ({ isyours, data }) => {
             <img
               src={currentuser.profileimg}
               alt="avatar 1"
+                width="50"
+            height="50"
               className="rounded-circle direct-chat-img"
             />
 
@@ -108,6 +110,8 @@ const Message = ({ isyours, data }) => {
             <img
               src={friendimgURL}
               alt="avatar 1"
+                width="50"
+            height="50"
               className="rounded-circle direct-chat-img"
             />
 
