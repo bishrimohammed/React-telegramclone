@@ -78,9 +78,7 @@ const Message = ({ isyours, data }) => {
           <Grid container>
               <Grid item xs={12}>
                 <ListItemText align="right" primary={data.text}></ListItemText>
-                <ListItemIcon>
-                    <Avatar alt="Cindy Baker" src={currentuser.profileimg} />
-                </ListItemIcon>
+                
               </Grid>
               <Grid item xs={12}>
                 <ListItemText align="right" secondary={
@@ -92,16 +90,20 @@ const Message = ({ isyours, data }) => {
 
                 </ListItemText>
               </Grid>
-          </Grid>
+            </Grid>
+            <ListItemIcon>
+                    <Avatar alt="Cindy Baker" src={currentuser.profileimg} />
+                </ListItemIcon>
         </ListItem>
         )}
         {!isyours && (
           <ListItem key="1">
-          <Grid container>
-              <Grid item xs={12}>
-                <ListItemIcon>
+            <ListItemIcon>
                     <Avatar alt="Cindy Baker" src={friendimgURL} />
                 </ListItemIcon>
+          <Grid container>
+              <Grid item xs={12}>
+               
                   <ListItemText align="left" primary={data.text}></ListItemText>
               </Grid>
               <Grid item xs={12}>
