@@ -83,8 +83,7 @@ const Message = ({ isyours, data }) => {
                   proHours.mediter}
               </span>
             </div>
-
-            <img
+<div className="d-flex align-items-center"><img
               src={currentuser.profileimg}
               alt="avatar 1"
                 width={50}
@@ -92,7 +91,8 @@ const Message = ({ isyours, data }) => {
               className="rounded-circle  direct-chat-img"
             />
 
-            <div className="direct-chat-text">{data.text}</div>
+            <div className="direct-chat-text">{data.text}</div></div>
+            
           </div>
         )}
         {!isyours && (
@@ -106,8 +106,7 @@ const Message = ({ isyours, data }) => {
                   proHours.mediter}
               </span>
             </div>
-
-            <img
+<div className="d-flex align-items-center"> <img
               src={friendimgURL}
               alt="avatar 1"
                 width={50}
@@ -115,7 +114,8 @@ const Message = ({ isyours, data }) => {
               className="rounded-circle direct-chat-img"
             />
 
-            <div className="direct-chat-text">{data.text}</div>
+            <div className="direct-chat-text">{data.text}</div></div>
+           
           </div>
         )}
       </div>
