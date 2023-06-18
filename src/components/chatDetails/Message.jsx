@@ -17,7 +17,7 @@ const Message = ({ isyours, data }) => {
     };
    // getuser();
     if (friendId !== "") getuser()
-    if(friendId === "") {return null}
+    
 
   }, [data]);
   const getproperHour = (hour, minute) => {
