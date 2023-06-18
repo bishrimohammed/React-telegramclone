@@ -5,7 +5,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -15,7 +15,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 const defaultTheme = createTheme();
 const Login = () => {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const Auth = useSelector((state) => state.auth.user);
   const [email, setEmail] = useState("");
@@ -37,6 +37,7 @@ const Login = () => {
     });
     const { user, token } = await res.json();
     dispatch(setLogin({ currentuser: user, token }));
+    if(user) navigate("/")
     //console.log(Auth);
     // console.log(resdata);
   };
