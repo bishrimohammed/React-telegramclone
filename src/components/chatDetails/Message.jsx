@@ -71,11 +71,11 @@ const Message = ({ isyours, data }) => {
   );
   return (
     <>
-      <div className="direct-chat-messages">
+      <div className="direct-chat-messages py-0">
         {isyours && (
-          <div className="direct-chat-msg right">
+          <div className="direct-chat-msg right mb-0">
             <div className="direct-chat-infos clearfix">
-              <span className="direct-chat-timestamp float-left">
+              <span className="direct-chat-timestamp float-left mb-0">
                 {proHours.hours +
                   ":" +
                   proHours.minutes +
@@ -87,8 +87,8 @@ const Message = ({ isyours, data }) => {
             <img
               src={currentuser.profileimg}
               alt="avatar 1"
-                width="50"
-            height="50"
+                width={50}
+            height={50}
               className="rounded-circle  direct-chat-img"
             />
 
@@ -96,9 +96,9 @@ const Message = ({ isyours, data }) => {
           </div>
         )}
         {!isyours && (
-          <div className="direct-chat-msg">
+          <div className="direct-chat-msg mb-0">
             <div className="direct-chat-infos clearfix">
-              <span className="direct-chat-timestamp float-right">
+              <span className="direct-chat-timestamp float-right mb-0">
                 {proHours.hours +
                   ":" +
                   proHours.minutes +
@@ -110,8 +110,8 @@ const Message = ({ isyours, data }) => {
             <img
               src={friendimgURL}
               alt="avatar 1"
-                width="50"
-            height="50"
+                width={50}
+            height={50}
               className="rounded-circle direct-chat-img"
             />
 
