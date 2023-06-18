@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import img from "../../assets/_F2A3857_1660135787480_1660135869754.JPG";
 import "./message.css";
 import { useSelector } from "react-redux";
@@ -6,12 +6,13 @@ const Message = ({ isyours, data }) => {
     var hour = new Date(data.createdAt);
   const URL = process.env.REACT_APP_server_URL;
   const currentuser = useSelector((state) => state.auth.user);
+  const [friendimgURL, setfriend] = useState("");
   useEffect(() => {
     const friendId = data.senderId === currentuser._id ? "": data.senderId
     const getuser = async () => {
       const res = await fetch(`${URL}/api/users/${friendId}`);
       const resdata = await res.json();
-      
+      setfriend(resdata.profileimg)
       
        console.log(resdata);
     };
@@ -84,7 +85,7 @@ const Message = ({ isyours, data }) => {
             </div>
 
             <img
-              src={img}
+              src={currentuser.profileimg}
               alt="avatar 1"
               className="rounded-circle direct-chat-img"
             />
@@ -105,7 +106,7 @@ const Message = ({ isyours, data }) => {
             </div>
 
             <img
-              src={img}
+              src={friendimgURL}
               alt="avatar 1"
               className="rounded-circle direct-chat-img"
             />
