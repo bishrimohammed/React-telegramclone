@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import img from "../../assets/_F2A3857_1660135787480_1660135869754.JPG";
 import "./message.css";
 const Message = ({ isyours, data }) => {
-  var hour = new Date(data.createdAt);
+    var hour = new Date(data.createdAt);
+  const URL = process.env.REACT_APP_server_URL;
+  const currentuser = useSelector((state) => state.auth.user);
+  useEffect(() => {
+    const friendId = data.senderId === currentuser._id ? "": data.senderId
+    const getuser = async () => {
+      const res = await fetch(`${URL}/api/users/${friendId}`);
+      const resdata = await res.json();
+      
+      
+       console.log(resdata);
+    };
+   // getuser();
+    if (friendId !== "") getuser()
+    
+
+  }, [data]);
 
   const getproperHour = (hour, minute) => {
     const hourD = hour - 12;
