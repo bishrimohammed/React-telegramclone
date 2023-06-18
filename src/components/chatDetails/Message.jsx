@@ -1,9 +1,25 @@
 import React from "react";
 import img from "../../assets/_F2A3857_1660135787480_1660135869754.JPG";
 import "./message.css";
+import { useSelector } from "react-redux";
 const Message = ({ isyours, data }) => {
   var hour = new Date(data.createdAt);
+  const URL = process.env.REACT_APP_server_URL;
+  const currentuser = useSelector((state) => state.auth.user);
+  useEffect(() => {
+    const friendId = data.senderId === currentuser._id ? "": data.senderId
+    const getuser = async () => {
+      const res = await fetch(`${URL}/api/users/${friendId}`);
+      const resdata = await res.json();
+      
+      
+       console.log(resdata);
+    };
+    getuser();
+    if (friendId !== "") getuser()
+    if(friendId === "") {return null}
 
+  }, [data]);
   const getproperHour = (hour, minute) => {
     const hourD = hour - 12;
     const minutes = minute > 9 ? minute : "0" + minute;
@@ -34,7 +50,7 @@ const Message = ({ isyours, data }) => {
               {proHours.hours + ":" + proHours.minutes + " " + proHours.mediter}
             </p>
           </div>
-          <img src={img} alt="avatar 1" className="rounded-circle" />
+          <img src={currentuser.profileimg} alt="avatar 1" className="rounded-circle" />
         </div>
       )}
       {!isyours && (

@@ -27,7 +27,7 @@ const Friend = ({ active, conserv, currentuser }) => {
       <div className=" d-flex align-items-center py-2 px-1">
         <div className=" me-1">
           <img
-            src={img}
+            src={user.profileimg}
             width="50"
             height="50"
             alt=""
