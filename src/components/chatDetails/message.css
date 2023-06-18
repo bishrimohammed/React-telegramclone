@@ -68,10 +68,9 @@
 }
 
 .direct-chat-img {
-  border-radius: 50%;
+  
   float: left;
-  height: 40px;
-  width: 40px;
+  
 }
 
 .right .direct-chat-img {
