@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import img from "../../assets/_F2A3857_1660135787480_1660135869754.JPG";
 import "./message.css";
+import { useSelector } from "react-redux";
 const Message = ({ isyours, data }) => {
     var hour = new Date(data.createdAt);
   const URL = process.env.REACT_APP_server_URL;
