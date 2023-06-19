@@ -7,8 +7,7 @@ const Messages = () => {
   const messages = useSelector((state) => state.auth.Messages);
   const currentuser = useSelector((state) => state.auth.user);
   return (
-    <div className="chatDetail px-2">
-      
+    <div className="chatDetail px-2">      
         <Grid item xs={9}>
           <List>
             {messages.map((m) => (
