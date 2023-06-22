@@ -14,7 +14,7 @@ const MessageInput = () => {
   const currentuser = useSelector((state) => state.auth.user);
   const isChatSet = useSelector((state) => state.auth.isConseravtionSet);
   const dispatch = useDispatch();
-  const URL = process.env.REACT_APP_server_URL;
+  //const URL = process.env.REACT_APP_server_URL;
   useEffect(() => {
     inputValue.current.value = "";
   }, [isChatSet]);
@@ -25,11 +25,14 @@ const MessageInput = () => {
       senderId: currentuser._id,
       text: inputValue.current.value,
     };
-    const res = await fetch(`${URL}/api/messages`, {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_server_URL}/api/messages`,
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
     const data = await res.json();
     dispatch(setMessage(data));
     dispatch(setConservation({ id: isChatSet, conservation: data }));

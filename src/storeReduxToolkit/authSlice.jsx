@@ -33,6 +33,13 @@ const authSlice = createSlice({
         lastMessage: lastmessage,
       };
     },
+    setActiveConservation(state, action) {
+      state.Conservations = state.Conservations.forEach((conser) =>
+        conser._id === action.payload
+          ? { ...conser, isAtive: true }
+          : { ...conser, isAtive: false }
+      );
+    },
     setMessages(state, action) {
       state.Messages = action.payload.messages;
     },

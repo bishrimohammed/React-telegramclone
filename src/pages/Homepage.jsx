@@ -8,24 +8,28 @@ import Chat from "../components/chatDetails/Chat";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { setConservations } from "../storeReduxToolkit/authSlice";
+import { useCallback } from "react";
 const Homepage = () => {
   const conser = useSelector((state) => state.auth.Conservations);
   const user = useSelector((state) => state.auth.user);
   const [friendActive, setFriendActive] = useState({});
   const dispatch = useDispatch();
-  const URL = process.env.REACT_APP_server_URL;
+  //const URL = process.env.REACT_APP_server_URL;
   useEffect(() => {
     const getconservation = async () => {
-      const res = await fetch(`${URL}/api/conservations/${user._id}`);
+      const res = await fetch(
+        `${process.env.REACT_APP_server_URL}/api/conservations/${user._id}`
+      );
       const resdata = await res.json();
       dispatch(setConservations({ consevations: resdata }));
     };
     getconservation();
   }, [user._id, dispatch]);
   //console.log(conser);
-  const getFriend = (friend) => {
+
+  const getFriend = useCallback((friend) => {
     setFriendActive(friend);
-  };
+  }, []);
   return (
     <div className="wrapper container-fluid  px-0 py-0 d-flex ">
       <Sidebar />

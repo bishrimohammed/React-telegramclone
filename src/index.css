@@ -153,7 +153,7 @@ li.active .day {
 .chatDetail {
   overflow-y: scroll;
   flex: 1;
-  background-color: rgba(150, 149, 149, 0.849);
+  background-color: #fff;
 }
 .chatDetail::-webkit-scrollbar {
   display: none;
