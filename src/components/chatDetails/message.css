@@ -136,7 +136,7 @@
 .chat__item__content .chat__meta {
   justify-content: flex-end;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   margin-top: 5px;
 }
 .chat__item__content .chat__meta span {

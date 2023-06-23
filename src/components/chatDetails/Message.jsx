@@ -13,14 +13,14 @@ const Message = ({ isyours, data }) => {
     const friendId = data.senderId === currentuser._id ? "" : data.senderId;
     const getuser = async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_server_URLprocess.env.REACT_APP_server_URL}/api/users/${friendId}`
+        `${process.env.REACT_APP_server_URL}/api/users/${friendId}`
       );
       const resdata = await res.json();
       setfriend(resdata.profileimg);
     };
     // getuser();
     if (friendId !== "") getuser();
-  }, [data]);
+  }, [data, currentuser._id]);
 
   const getproperHour = (hour, minute) => {
     const hourD = hour - 12;

@@ -54,7 +54,7 @@ function Friends({ conservation, getFriend }) {
         >
           <Friend
             key={conserv._id}
-            active={currentChat._id === conserv._id}
+            active={currentChat && currentChat._id === conserv._id}
             conserv={conserv}
             currentuser={currentuser}
           />
